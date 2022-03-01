@@ -1,0 +1,192 @@
+amt  of time taken depnds how much on the input
+
+
+
+eg 1:
+
+int n;
+cin>>n;
+int a=0;
+for(int i=1;i<=n;i++)
+a+=1;      
+
+explanation: idhr a=a+1 n times chalega mtlb ki 
+           // n is directly proportional to time(linear)
+eg 2:
+
+for(int i=1;i<=n;i++)
+{
+    for(int j=1;j<=n;j++)
+    a+=1;
+}
+expanation: idhr a+=1 n times chalega nest loop m aur j vala loop n times chalega i loop m mtlb
+             // n*n is directly proportional to time(quadratic)
+
+SPACE COMPLEXITY
+                 -ek code km space m hona chahiye aur faast hona chahiye:  y program ko efficient bananta h
+
+ 
+ eg 1: 
+ 
+int n;
+cin>>n;
+int a=0;
+for(int i=1;i<=n;i++)
+a+=1;  
+
+--> time complexity=linear
+--->space complexity: 4 byte(int n ka),4 byte int a ka,4 byte int i ka
+                       //total 12 byte memory
+                          //space is independent of n
+eg 2:
+int arr[n];
+space complixity:   n is proportional to space
+
+
+WORST CASE TIME COMPLEXITY(O):
+           EG: search x in a1,a2,a3......an
+                worst case: time dp  to n when x=an
+                notation: O(n)
+ 
+ BEST CASE TIME COMPLEXITY(Ω):
+                        EG: seach x in a1,a2.....an
+                              best case: time constant when x=a1 
+                              notation: Ω(1)  (1-->constant time)
+
+ AVERAGE CASE TC(θ):          
+                EG:a1,a2,a3....an 
+                     avg time =  (1 + 2 +3...+ n)/n  = (n+1)/2  ie:time dp to n
+                     notaton: θ(n)
+
+
+TIME COMPLEXITY CALCULATION:
+
+Q)   
+     int n,m;
+     cin>>n>>m;
+     int a=0;
+     for(int i=1;i<=n;i++)
+        a+=1;                       // n times run ho rha h
+    for(int j=1;j<=m;j++)
+        a+=1;                       //m times run ho rha h
+
+TC: O(n+m) 
+
+Q)
+     int n,m;
+     cin>>n>>m;
+     int a=0;
+     for(int i=1;i<=n;i++)
+     {                      
+         for(int j=1;j<=m;j++)         //i=1,2 loop 1 to m
+          a=a+rand();                //n*m times run hoga
+     }            
+
+     TC=   O(n*m)
+
+Q)    
+      int n,m;
+     cin>>n>>m;
+     int a=0;
+     for(int i=1;i<=n;i++)
+     {                      
+         for(int j=1;j<=m;j++)       
+          a=a+rand();                //n*m times run hoga
+     } 
+     for(int i=1;i<=n;i++)
+        a=a+rand();                    //n times run hoga
+
+     TC =  O(n*m + n)
+
+Q)     
+      int n,i;
+      cin>>n;
+      int a=0;i=n;
+      while(i>=1)
+      {
+          a=a+1;
+          i/=2;
+      }
+
+      i=n-->i = n/2 -->i=n/4
+      Assuming the loop is on kth iteration 
+
+       i=n/(2^k)
+       =n/(2^k)>1
+       = n > 2k
+       = log n > k log 2 
+       = k < log n
+       TC = O(log n)
+
+Q)
+     int n;
+    cin>>n;
+    int c=0;
+    for(int i=1;i<=n;i++)
+    {
+        for(int j=1;j<=n;j=j+i)
+        {
+            c+=1; 
+        }
+    }
+    Soln:
+          i=1   j=1,2,3,4,5....n  terms=n
+          i=2   j=1,3,5,7,9....n   terms=n/2
+          i=3   j=1,4,7,10.....n   terms=n/3
+          i=n   j=1,n+1             terms=1
+
+          sum: n+n/2+n/3......1
+               = n(1+1/2.....1/n)
+                
+                  n 
+               =   ∫(1/x).dx= (1+1/2...)=log n
+                  1
+
+               = nlogn
+               TC: O(nlogn)
+
+COMPARISON OF FUNCTIONS 
+
+Q)    n   n^2  n^3
+
+n=1   1    1    1  unit time
+n=2   2    4    8  unit time
+n=3   3    9    27  unit time
+
+O(n)-->fast     
+O(n^3)-->slow
+therefore,     TC: O(n) < O(n^2) <O(n^3)
+       efficiency: O(n) > O(n^2) > O(n^3)
+
+Q)   n log n       
+
+n=1  1   0   
+n=2  2   log(2) base 2 = 1 unit time
+
+TC: O(log n)<O( n)
+
+Q)  sqrt(n)   log n
+n=1    1       0
+n=2   root 2   log 2 base 2
+
+TC:  O(log n) < O(sqrt(n))
+
+
+Q)  f(n)=n     n<=1000
+        =n^2   n>1000
+
+Soln: TC is used for large value inputs So
+   TC= O(n^2)
+
+Q)  g1(n)=n  n<=100
+         =n^4  n>=100
+
+    g2(n)=n^3    n<=100
+         =n^2    n>100
+Find tc for g1(n)+g2(n)
+
+Soln: tc of higher values will be taken
+    O(n^4 + n^2)
+    but at large values n^2 will be neglible compared n4
+    so 
+    ans: O(n^4)
