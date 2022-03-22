@@ -1,31 +1,32 @@
 #include <iostream>
 using namespace std;
+
 class node
 {
-
 public:
     int data;
     node *left;
     node *right;
-
-    node(int val)
+    node(int data)
     {
-        data = val;
+        this->data = data;
         left = NULL;
         right = NULL;
     }
 };
 
-void preorder(node *Node)
+int sumOfNodes(node *root)
 {
+    static int sum = 0;
+    if (root == NULL)
+        return 0;
 
-    if (Node == NULL)
-        return;
-
-    preorder(Node->left);
-    cout << Node->data;
-    preorder(Node->right);
+    sumOfNodes(root->left);
+    sum += root->data;
+    sumOfNodes(root->right);
+    return sum;
 }
+
 int main()
 {
     node *root = new node(1);
@@ -36,6 +37,6 @@ int main()
     root->right->left = new node(6);
     root->right->right = new node(7);
 
-    preorder(root);
+    cout << sumOfNodes(root);
     return 0;
 }

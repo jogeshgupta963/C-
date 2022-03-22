@@ -1,54 +1,61 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 #define n 100
 
-class stack{
+class stack
+{
 
-    int*arr;
+    int *arr;
     int top;
-    
-    public:
-    stack(){
-        arr=new int[n];
-        top=-1;
+
+public:
+    stack()
+    {
+        arr = new int[n];
+        top = -1;
     }
 
-    void push(int x){
+    void push(int x)
+    {
 
-        if(top == n-1){
-            cout<<"Stack filled "<<endl;
+        if (top == n - 1)
+        {
+            cout << "Stack filled " << endl;
             return;
         }
-        arr[++top]=x;
-
+        arr[++top] = x;
     }
-    void pop(){
-        if(top==-1){
-            cout<<"No element to pop out"<<endl;
+    void pop()
+    {
+        if (top == -1)
+        {
+            cout << "No element to pop out" << endl;
         }
         top--;
     }
-    int Top(){
-         if(top==-1){
-            cout<<"empty list"<<endl;
+    int Top()
+    {
+        if (top == -1)
+        {
+            cout << "empty list" << endl;
             return -1;
         }
         return arr[top];
     }
-    bool empty(){
-        return top==-1;
+    bool empty()
+    {
+        return top == -1;
     }
-
 };
 int main()
 {
     stack st;
-    st.push(1);   
-    st.push(2);   
+    st.push(1);
+    st.push(2);
     st.push(3);
-    cout<<st.Top();
-    st.pop();
-    cout<<st.Top();
-    cout<<st.empty();
+    cout << st.Top();
+    // st.pop();
+    // cout<<st.Top();
+    // cout<<st.empty();
     return 0;
 }
