@@ -36,11 +36,14 @@ bool heightBal(node *root)
     {
         return false;
     }
-    if (std::abs(height(root->left) - height(root->right)) <= 1)
+    int lh = height(root->left);
+    int rh = height(root->right);
+    if (std::abs(lh - rh) <= 1)
     {
         return true;
     }
-    return false;
+    else
+        return false;
 }
 
 /*
@@ -56,11 +59,17 @@ int main()
     root->left = new node(2);
     root->right = new node(3);
     root->left->left = new node(4);
-    root->left->left->left = new node(6);
-    root->left->left->left->left = new node(6);
-    root->right->right = new node(5);
+    root->left->right = new node(4);
+    root->right->left = new node(6);
+    root->right->right = new node(6);
+    root->right->right->left = new node(5);
+    root->right->right->left->left = new node(5);
+    // root->right->right->left->left->left = new node(5);
+    // root->right->right->left->left->left->left = new node(5);
+    // root->right->right->left->right->left->left = new node(5);
 
-    cout << heightBal;
+    cout << heightBal(root);
+    // cout << height(root);
 
     return 0;
 }

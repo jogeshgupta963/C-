@@ -139,18 +139,15 @@ int main()
     q.enqueue();
     cout << q.dequeue();
 
-    // cout << q.dequeue() << endl;
-    // cout << q.dequeue() << endl;
-    // cout << q.dequeue() << endl;
-
     // int choice;
+    // cin >> choice;
     // switch (choice)
     // {
     // case 1:
-    //     simpleQueue(st);
+
     //     break;
     // case 2:
-    //     circularQueue(st);
+    //     // circularQueue(st);
     // default:
     //     break;
     // }
