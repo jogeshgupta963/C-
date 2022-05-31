@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-int partition(vector<int> &v, int low, int high)
+int partitionIndex(vector<int> &v, int low, int high)
 {
     int pivot = v[high];
     int i = low - 1;
@@ -18,6 +18,7 @@ int partition(vector<int> &v, int low, int high)
     swap(v[i + 1], v[high]);
     return i + 1;
 }
+
 void quicksort(vector<int> &v, int low, int high)
 {
     if (low < high)
@@ -30,13 +31,10 @@ void quicksort(vector<int> &v, int low, int high)
 
 int main()
 {
-    int n;
-    cin >> n;
-    // int v[n];
-    vector<int> v(n, 0);
+
+    vector<int> v(0, n);
     for (int i = 0; i < n; i++)
         cin >> v[i];
-
     quicksort(v, 0, n);
     cout << endl;
     for (int i = 0; i < n; i++)
